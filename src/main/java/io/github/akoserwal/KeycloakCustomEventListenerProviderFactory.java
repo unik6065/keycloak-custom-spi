@@ -29,6 +29,6 @@ public class KeycloakCustomEventListenerProviderFactory implements EventListener
 
 	@Override
 	public String getId() {
-		return "kafka-event-listener";
+		return "custom-event-listener";
 	}
 }
