@@ -20,29 +20,8 @@ public class KeycloakCustomEventListener implements EventListenerProvider {
 	@Override
 	public void onEvent(Event event) {
     if (EventType.REGISTER.equals(event.getType()) ) {
-        System.out.println("User register as:-"+event.getUserId());
-
-        String url = "http://swaplit.default.svc.cluster.local/user";
-
-        try {
-          SimpleHttp.Response resp =
-            SimpleHttp.doPost(url, session)
-            .param("userId", event.getUserId())
-            .asResponse();
-          // if (resp.asStatus != 200) {
-          //   System.out.println("Error while calling the API");
-          // }
-        } catch (Exception e) {
-          e.printStackTrace();
-        // if (resp.asStatus != 200) {
-        //   System.out.println("Error while calling the API");
-        // }
-
-      }
-
-      if (EventType.DELETE_ACCOUNT.equals(event.getType()) ) {
-        System.out.println("User delete as:-"+event.getUserId());
-      }
+      System.out.println("User register:-"+event.getUserId());
+      Producer.publishEvent("keycloak-events", event.getUserId());
 
     }
   }
