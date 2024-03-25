@@ -9,7 +9,7 @@ import java.util.Properties;
 
 public class Producer {
 
-	private final static String BOOTSTRAP_SERVER = "127.0.0.1:9092";
+	private final static String BOOTSTRAP_SERVER = "my-cluster-kafka-bootstrap.kafka.svc.cluster.local:9092";
 
 	public static void publishEvent(String topic, String value){
 		//reset thread context
