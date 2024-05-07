@@ -21,8 +21,12 @@ public class KeycloakCustomEventListener implements EventListenerProvider {
 	public void onEvent(Event event) {
     if (EventType.REGISTER.equals(event.getType()) ) {
       System.out.println("User register:-"+event.getUserId());
-      Producer.publishEvent("keycloak-events", event.getUserId());
+      Producer.publishEvent("user-registration-events", event.getUserId());
 
+    }
+    if (EventType.DELETE_ACCOUNT.equals(event.getType()) ) {
+      System.out.println("User delete:-"+event.getUserId());
+      Producer.publishEvent("user-delete-events", event.getUserId());
     }
   }
 
